@@ -70,7 +70,7 @@ export default function FilesList() {
               <TableCell>Created At</TableCell>
               <TableCell>Updated At</TableCell>
               <TableCell>Tags</TableCell>
-              <TableCell>Action</TableCell>
+              <TableCell>Share Link</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
