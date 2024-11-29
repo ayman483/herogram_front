@@ -16,7 +16,7 @@ export default function Login() {
       const result = await loginUser(form);
       if (result.token) {
         localStorage.setItem("token", result.token);
-        navigate("/files");
+        window.location.href = '/files';  // Redirect to files page
       }
     } catch (err) {
       setError(err.message || "Login failed.");
