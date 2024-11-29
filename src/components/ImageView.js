@@ -1,44 +1,3 @@
-// import React, { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
-
-// export default function ImageView() {
-//   const [imageData, setImageData] = useState(null);
-//   const { fileId } = useParams(); // Get the file ID from the URL
-
-//   useEffect(() => {
-//     const fetchImageData = async () => {
-//       const response = await fetch(`http://167.172.103.104:3000/files/image-click/${fileId}`);
-//       const data = await response.json();
-//       setImageData(data);
-//     };
-
-//     fetchImageData();
-//   }, [fileId]);
-
-//   return (
-//         <div>
-//         {imageData ? (
-//           <div>
-//             <img src={imageData.imageUrl} alt="Shared File" style={{ width: '100%', height: 'auto' }} />
-//             {imageData.tags && imageData.tags.length > 0 && (
-//               <div>
-//                 <strong>Tags:</strong>
-//                 <ul>
-//                   {imageData.tags.map((tag, index) => (
-//                     <li key={index}>{tag}</li>
-//                   ))}
-//                 </ul>
-//               </div>
-//             )}
-//           </div>
-//         ) : (
-//           <p>Loading...</p>
-//         )}
-//       </div>
-//   );
-// }
-
-
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -63,23 +22,21 @@ export default function ImageView() {
 
   return (
     <div>
-      {imageData ? (
-        <div>
-          <img src={imageData.imageUrl} alt="Shared File" style={{ width: '100%', height: 'auto' }} />
-          {/* {imageData.tags && imageData.tags.length > 0 && (
-            <div>
-              <strong>Tags:</strong>
-              <ul>
-                {imageData.tags.map((tag, index) => (
-                  <li key={index}>{tag}</li>
-                ))}
-              </ul>
-            </div>
-          )} */}
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+    {imageData && (imageData.type === "image/jpeg" || imageData.type === "image/png" || imageData.type === "image/gif") ? (
+      <div>
+        <img src={imageData.imageUrl} alt="Shared File" style={{ width: '100%', height: 'auto' }} />
+      </div>
+    ) : imageData && imageData.type === "video/mp4" ? (
+      <div>
+        <video width="100%" height="auto" controls>
+          <source src={imageData.imageUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    ) : (
+      <p>Loading...</p>
+    )}
+  </div>
+  
   );
 }
