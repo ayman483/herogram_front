@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+const API_URL = "http://167.172.103.104:3000";
 
 const handleResponse = async (response) => {
   if (response.status === 401) {

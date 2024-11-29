@@ -7,7 +7,7 @@
 
 //   useEffect(() => {
 //     const fetchImageData = async () => {
-//       const response = await fetch(`http://localhost:3000/files/image-click/${fileId}`);
+//       const response = await fetch(`http://167.172.103.104:3000/files/image-click/${fileId}`);
 //       const data = await response.json();
 //       setImageData(data);
 //     };
@@ -52,7 +52,7 @@ export default function ImageView() {
     if (prevFileId === fileId) return;
 
     const fetchImageData = async () => {
-      const response = await fetch(`http://localhost:3000/files/image-click/${fileId}`);
+      const response = await fetch(`http://167.172.103.104:3000/files/image-click/${fileId}`);
       const data = await response.json();
       setImageData(data);
       setPrevFileId(fileId); // Update the previous fileId

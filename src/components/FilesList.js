@@ -9,7 +9,7 @@ import {
   TableRow,
   Paper,
   Typography,
-  Box, Link,Button,
+  Box, Link, Button,
 } from "@mui/material";
 
 export default function FilesList() {
@@ -34,7 +34,7 @@ export default function FilesList() {
 
   const handleShare = (fileId) => {
     // Generate the shareable URL
-    const shareUrl = `http://localhost:3001/image/${fileId}`;
+    const shareUrl = `http://167.172.103.104/image/${fileId}`;
     navigator.clipboard.writeText(shareUrl);
     alert(`Share URL copied to clipboard: ${shareUrl}`);
   };
@@ -92,9 +92,9 @@ export default function FilesList() {
                     {/* <a href={file.filePath} target="_blank" rel="noopener noreferrer">
                       {file.name || 'N/A'}
                     </a> */}
-                    <Link href={`http://localhost:3000/${file.filePath}`} target="_blank">
-                    {file.name || "Untitled"}
-                  </Link>
+                    <Link href={`http://167.172.103.104:3000/${file.filePath}`} target="_blank">
+                      {file.name || "Untitled"}
+                    </Link>
                   </TableCell>
                   <TableCell>{file.filePath}</TableCell>
                   <TableCell>{file.fileType || 'N/A'}</TableCell>
@@ -105,12 +105,22 @@ export default function FilesList() {
                     {file.fileTags && file.fileTags.length > 0
                       ? file.fileTags.map((tag) => tag.tag_name).join(", ")
                       : 'N/A'}
-                  </TableCell>   
-                  <TableCell>
-                  <Button variant="contained" onClick={() => handleShare(file.id)}>
-                    Share
-                  </Button>
-                </TableCell>
+                  </TableCell>
+                  {/* <TableCell>
+                    <Button variant="contained" onClick={() => handleShare(file.id)}>
+                      Share
+                    </Button>
+                  </TableCell> */}
+                   <TableCell>
+                    {/* File Link */}
+                    <Link
+                      href={`http://167.172.103.104/image/${file.id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {file.name || "Untitled"}
+                    </Link>
+                  </TableCell>
                 </TableRow>
               ))
             ) : (
